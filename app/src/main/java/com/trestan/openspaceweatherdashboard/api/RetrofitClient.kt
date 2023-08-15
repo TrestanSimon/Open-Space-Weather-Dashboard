@@ -1,4 +1,4 @@
-package com.trestan.openspaceweatherdashboard.service
+package com.trestan.openspaceweatherdashboard.api
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "https://services.swpc.noaa.gov/json/"
+    private const val BASE_URL = "https://services.swpc.noaa.gov/"
 
     val okHttpClient = OkHttpClient()
         .newBuilder()

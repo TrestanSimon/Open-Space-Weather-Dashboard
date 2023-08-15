@@ -2,73 +2,53 @@ package com.trestan.openspaceweatherdashboard
 
 import android.graphics.Color
 import android.os.Bundle
+import android.window.OnBackInvokedDispatcher
 import androidx.activity.ComponentActivity
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.trestan.openspaceweatherdashboard.service.GOESXRayService
+import com.trestan.openspaceweatherdashboard.features.goesxray.RxFragment
 
 
-class MainActivity : ComponentActivity() {
-
-    private lateinit var chart: LineChart
-
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        chart = findViewById(R.id.chart)
-
-        graphXRays(chart)
-    }
-}
-
-fun getGOESXRayData(): Pair<List<Entry>, List<Entry>> {
-    val goesXRayData = GOESXRayService().getBody()
-    val longData = ArrayList<Entry>()
-    val shortData = ArrayList<Entry>()
-
-    for (i in 0 until goesXRayData?.size!!) {
-        if (goesXRayData[i].energy.contentEquals("0.1-0.8nm")) {
-            longData.add(Entry(
-                i.toFloat(),
-                kotlin.math.log(goesXRayData[i].flux.toDouble(), 10.toDouble()).toFloat()
-            ))
-        } else {
-            shortData.add(Entry(
-                i.toFloat(),
-                kotlin.math.log(goesXRayData[i].flux.toDouble(), 10.toDouble()).toFloat()
-            ))
+        if (savedInstanceState == null) {
+            changeFragment(RxFragment())
         }
     }
-    return longData.toList() to shortData.toList()
-}
 
-fun graphXRays(chart: LineChart) {
-    Thread {
-        val dataSets = ArrayList<ILineDataSet>()
-        val (longData, shortData) = getGOESXRayData()
+    private fun changeFragment(f: Fragment, cleanStack: Boolean = false) {
+        val ft = supportFragmentManager.beginTransaction()
+        if (cleanStack) {
+            clearBackStack();
+        }
+        ft.setCustomAnimations(
+            androidx.appcompat.R.anim.abc_fade_in,
+            androidx.appcompat.R.anim.abc_fade_out,
+            androidx.appcompat.R.anim.abc_popup_enter,
+            androidx.appcompat.R.anim.abc_popup_exit
+        )
+        ft.replace(R.id.activity_base_content, f)
+        ft.addToBackStack(null)
+        ft.commit()
+    }
 
-        val longDataSet = LineDataSet(longData, "Long wave")
-        longDataSet.lineWidth = 3f
-        longDataSet.setDrawCircles(false)
-        longDataSet.setDrawCircleHole(false)
-        longDataSet.color = Color.rgb(255, 0, 0)
-
-        val shortDataSet = LineDataSet(shortData, "Short wave")
-        shortDataSet.lineWidth = 2f
-        shortDataSet.setDrawCircles(false)
-        shortDataSet.setDrawCircleHole(false)
-        shortDataSet.color = Color.rgb(0, 255, 0)
-
-        dataSets.add(longDataSet)
-        dataSets.add(shortDataSet)
-
-        val data = LineData(dataSets)
-
-        chart.data = data
-        chart.invalidate()
-    }.start()
+    private fun clearBackStack() {
+        val manager = supportFragmentManager
+        if (manager.backStackEntryCount > 0) {
+            val first = manager.getBackStackEntryAt(0)
+            manager.popBackStack(first.id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
+    }
 }
