@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Open Space Weather Dashboard</string>
+    <string name="c_class">C class</string>
+    <string name="m_class">M class</string>
+    <string name="x_class">X class</string>
+    <string name="proton">Proton event</string>
+    <string name="pca">PCA</string>
+    <string name="percent">%1$s%%</string>
 </resources>

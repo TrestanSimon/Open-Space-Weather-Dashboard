@@ -18,6 +18,7 @@ class Adapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         delegateAdapters.put(AdapterConstants.LOADING, LoadingDelegateAdapter())
         delegateAdapters.put(AdapterConstants.SOLARREGIONS, SolarRegionDelegateAdapter())
         delegateAdapters.put(AdapterConstants.GOESXRAY, GOESXRayDelegateAdapter())
+        delegateAdapters.put(AdapterConstants.SOLARPROBS, SolarProbabilitiesDelegateAdapter())
         items = ArrayList()
         items.add(loadingItem)
     }

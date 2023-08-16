@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:stretchColumns="*">
+
+    <TableRow> <!-- Header -->
+        <TextView
+            android:id="@+id/day_1"
+            android:layout_column="1"
+            tools:text="Day 1"
+            android:tooltipText="@string/proton"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/day_2"
+            tools:text="Day 2"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/day_3"
+            tools:text="Day 3"
+            android:padding="3dip" />
+    </TableRow>
+
+    <View
+        android:layout_height="2dip"
+        android:background="#FF909090" />
+
+    <TableRow> <!-- C class -->
+        <TextView
+            android:text="@string/c_class"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/c_flare_1"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/c_flare_2"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/c_flare_3"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+    </TableRow>
+
+
+    <TableRow> <!-- M class -->
+        <TextView
+            android:text="@string/m_class"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/m_flare_1"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/m_flare_2"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/m_flare_3"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+    </TableRow>
+
+
+    <TableRow> <!-- X class -->
+        <TextView
+            android:text="@string/x_class"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/x_flare_1"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/x_flare_2"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/x_flare_3"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+    </TableRow>
+
+    <View
+        android:layout_height="2dip"
+        android:background="#FF909090" />
+
+    <TableRow> <!-- >10 pfu of >10 MeV protons -->
+        <TextView
+            android:text="@string/proton"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/proton_1"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/proton_2"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/proton_3"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+    </TableRow>
+
+    <View
+        android:layout_height="2dip"
+        android:background="#FF909090" />
+
+    <TableRow> <!-- PCA -->
+        <TextView
+            android:text="@string/pca"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/pca_1"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/pca_2"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/pca_3"
+            tools:text="@string/percent"
+            android:padding="3dip" />
+    </TableRow>
+</TableLayout>
