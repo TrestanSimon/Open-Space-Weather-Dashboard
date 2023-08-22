@@ -12,7 +12,7 @@ class RxManager(private val api: RestAPI = RestAPI()) {
                 subscriber ->
             val body = listOf(
                 GOESXRayItem(api),
-                SolarProbabilitiesItem(api)
+                //SolarProbabilitiesItem(api)
             )
             subscriber.onNext(body)
             subscriber.onCompleted()

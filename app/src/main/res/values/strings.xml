@@ -6,4 +6,8 @@
     <string name="proton">Proton event</string>
     <string name="pca">PCA</string>
     <string name="percent">%1$s%%</string>
+    <string name="goes_xray_chart_title">GOES X-Ray Flux</string>
+    <string name="goes_xray_flux_axis_label">Flux</string>
+    <string name="goes_xray_time_axis_label">Time (UTC)</string>
+    <string name="watts_per_m2"><![CDATA[W&sdot;m<sup><small>&minus;2</small></sup>]]></string>
 </resources>
